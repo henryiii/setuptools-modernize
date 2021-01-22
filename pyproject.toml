@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "setuptools_modernize"
+version = "0.1.0"
+authors = [
+    "Henry Schreiner <henry.schreiner@cern.ch>",
+]
+maintainers = [
+    "The Scikit-HEP admins <scikit-hep-admins@googlegroups.com>",
+]
+homepage = "https://github.com/henryiii/setuptools-modernize"
+repository = "https://github.com/henryiii/setuptools-modernize"
+license = "BSD-3-Clause"
+description = "Modernize setup.py into setup.cfg"
+
+classifiers = [
+  "Topic :: Scientific/Engineering",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Development Status :: 1 - Planning",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rich = "^9.8.2"
+click = "^7.1.2"
+black = "^20.8b1"
+
+pytest = { version = ">= 4.6", optional = true }
+
+[tool.poetry.dev-dependencies]
+pytest = ">= 4.6"
+
+[tool.poetry.extras]
+test = [
+    "pytest",
+]
+dev = [
+    "pytest",
+]
+
+[tool.poetry.scripts]
+setuptools-modernize = 'setuptools_modernize.parse:main'
+setuptools-modernize-python-requires = 'setuptools_modernize.python_requires:main'
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_config]
+addopts = "-rs -s -Wd"
+testpaths = [
+    "tests",
+]
