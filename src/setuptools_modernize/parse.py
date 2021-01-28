@@ -147,9 +147,12 @@ class Analyzer(ast.NodeVisitor):
 
     def visit_Call(self, node: ast.Call) -> None:
         self.generic_visit(node)
-        if getattr(node.func, "id", "") == "setup":
+        if (
+            getattr(node.func, "id", "") == "setup"
+            or getattr(node.func, "attr", "") == "setup"
+        ):
             node.keywords = [n for n in node.keywords if not self.store(n)]
-        self.setup_function = node
+            self.setup_function = node
 
 
 @click.command()
