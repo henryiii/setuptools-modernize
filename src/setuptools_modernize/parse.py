@@ -127,7 +127,7 @@ class Analyzer(ast.NodeVisitor):
             return self.constants[node.id]
         elif isinstance(node, ast.List):
             # Raises Attribute error if not valid
-            return "\n" + "\n".join([self.get_value(v) for v in node.elts])
+            return "\n" + "\n".join(self.get_value(v) for v in node.elts)
         elif isinstance(node, ast.Dict):
             # Raises Attribute error if not valid
             d = {k.value or "*": v.value for k, v in zip(node.keys, node.values)}  # type: ignore
