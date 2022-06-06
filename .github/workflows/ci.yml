@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v2
-    - uses: pre-commit/action@v2.0.2
+    - uses: pre-commit/action@v3.0.0
 
   checks:
     name: Check Python ${{ matrix.python-version }} on ${{ matrix.runs-on }}
